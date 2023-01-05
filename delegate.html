@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event delegate</title>
+</head>
+
+<body>
+    <h2>Event delegate</h2>
+    <section>
+        <ul id="item-container">
+            <li class="item">Lorem, ipsum.</li>
+            <li class="item">Voluptatem, officia!</li>
+            <li class="item">Voluptatum, accusantium.</li>
+            <li class="item">Dolores, voluptatum.</li>
+            <li class="item">Totam, alias.</li>
+            <li class="item">Ad, hic.</li>
+        </ul>
+        <input id="new-input" type="text" placeholder="Type a new item name">
+        <button id="add-item"  disabled>Add item</button>
+    </section>
+
+    <script>
+        // const items = document.getElementsByClassName('item');
+        // for (const item of items) {
+        //     item.addEventListener('click', function (event) {
+        //         //document.getElementById('item-container').removeChild(item);
+        //         event.target.parentNode.removeChild(event.target);
+        //     });
+        // }
+
+        document.getElementById('add-item').addEventListener('click',function(){
+            const addItem = document.getElementById('add-item');
+            const newInput = document.getElementById('new-input');
+            const li = document.createElement('li');
+            li.innerText = newInput.value;
+            li.classList.add('item');
+            const parent = document.getElementById('item-container');
+            parent.appendChild(li);
+            newInput.value=null;
+            addItem.setAttribute('disabled',true);
+        }) 
+
+        document.getElementById('new-input').addEventListener('keyup',function(){
+            const addItem = document.getElementById('add-item');
+            if(event.target.value!=''){
+                addItem.removeAttribute('disabled');
+            }
+            else{
+                addItem.setAttribute('disabled',true);
+            }
+        })
+
+        document.getElementById('item-container').addEventListener('click', function(event){
+            event.target.parentNode.removeChild(event.target);
+        })
+
+    </script>
+</body>
+
+</html>

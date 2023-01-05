@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment page</title>
+</head>
+
+<body>
+    <section>
+        <h2> Add your comments</h2>
+        <div id="comment-container">
+            <h3>your comments</h4>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe voluptas placeat quaerat iusto
+                    repellat ut corporis necessitatibus, quas laborum enim alias vero voluptatibus non numquam
+                    praesentium, hic doloribus consequuntur incidunt.</p>
+                <p>Quibusdam mollitia sunt excepturi maiores earum animi ad! Tempore hic quam mollitia commodi
+                    perferendis iure recusandae cum, velit pariatur deserunt ipsam saepe accusantium tenetur dolor nisi
+                    veniam fugiat suscipit iste.</p>
+                <p>Dignissimos quidem beatae ipsa harum earum, nesciunt ratione deserunt facere asperiores itaque neque
+                    doloremque quos delectus saepe, perspiciatis dolore rem dolores modi ullam voluptatibus autem
+                    repellendus quam? Aut, officia harum.</p>
+        </div>
+        <div>
+            <textarea name="" id="new-comment" cols="60" rows="5"></textarea>
+
+            <button id="submit-comment">Post</button>
+        </div>
+    </section>
+
+    <script>
+        //1. add event handeler
+        document.getElementById('submit-comment').addEventListener('click', function () {
+            //2. get user comment
+            const commentText = document.getElementById('new-comment');
+
+            //3. create comment paragraph
+            const commentBox = document.createElement('p');
+            commentBox.innerText = commentText.value;
+
+            //4. append the comment
+            const commentContainer = document.getElementById('comment-container');
+            commentContainer.appendChild(commentBox);
+
+            //5. clean  the comment
+            commentText.value = '';
+        })
+    </script>
+</body>
+
+</html>
